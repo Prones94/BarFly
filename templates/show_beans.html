@@ -1,0 +1,11 @@
+{%  extends 'base.html' %}
+
+{% block content %}
+<a href="/bean/new">Create New Bean</a>
+{% for beans in coffee_beans %}
+    <li><a href="/coffee_beans/{{ beans._id }}">{{beans.name}}</a>
+        <input type="radio" name="favorites" id="fav_bar">
+    </li>
+{% endfor %}
+
+{% endblock %}
