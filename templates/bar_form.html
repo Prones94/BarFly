@@ -2,9 +2,12 @@
 
 {% block content %}
 <form method="POST" action="/bars">
-    {% include 'partials/form.html' %}
-    <div class="bar_form">
-        <button type="submit">Save This!</button>
+    <div class="container">
+        <br>
+        {% include 'partials/form.html' %}
+        <div class="bar_form">
+            <button type="submit">Save This!</button>
+        </div>
     </div>
 </form>
 {% endblock %}

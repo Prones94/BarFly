@@ -1,12 +1,15 @@
-{%  extends 'base.html' %}
-
-{% block content %}
-<h1>Bar List</h1><br>
+{% extends 'base.html' %} {% block content %}
+<h1>Bar List</h1>
+<br />
 <button><a href="/">Home Page</a></button>
 <button><a href="/bars/new">Add Another Bar!</a></button>
 
 {% for bar in bars %}
-    <h3><a href='/bars/{{ bar._id }}'>{{ bar.name }}</a></h3> 
-{% endfor %}
-
-{% endblock %}
+<div class="col-md-3">
+    <div class="card" style="width: 18rem;">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><a href="/bars/{{ bar._id }}">{{ bar.name }}</a></li>
+        </ul>
+    </div>
+</div>
+{% endfor %} {% endblock %}

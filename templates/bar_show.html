@@ -1,25 +1,27 @@
 {% extends 'base.html' %} {% block content %}
 <div class="container">
-  <div class="img">
-    <img src="{{ bars.img_url }}" alt="bar image" />
-  </div>
-  <div class="information">
-    <h1>
-      <strong>{{ bars.name }}</strong>
-    </h1>
-    <br />
-    <ul>
-      <li>{{ bars.location }}</li>
-      <li>{{ bars.alias }}</li>
-      <li>{{ bars.rating }}</li>
-    </ul>
-    <fieldset>
-      <button><a href="/">Home Page</a></button>
-      <button><a href="/bars/{{ bars._id }}/edit">Edit</a></button>
-      <form method="POST" action="/bars/{{ bars._id }}/delete">
-        <button type="submit">Delete</button>
-      </form>
-    </fieldset>
-  </div>
+    <div class="img">
+        <img src="{{ bars.img_url }}" alt="bar image" />
+    </div>
+<div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+          <h1>
+              <strong>{{ bars.name }}</strong>
+            </h1>
+            <br />
+            <ul>
+                <li>{{ bars.location }}</li>
+                <li>{{ bars.alias }}</li>
+                <li>{{ bars.rating }}</li>
+            </ul>
+            <fieldset>
+                <button><a href="/">Home Page</a></button>
+                <button><a href="/bars/{{ bars._id }}/edit">Edit</a></button>
+                <form method="POST" action="/bars/{{ bars._id }}/delete">
+                    <button type="submit">Delete</button>
+                </form>
+            </fieldset>
+        </div>
+    </div>
 </div>
 {% endblock %}
