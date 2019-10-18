@@ -1,11 +1,9 @@
 {%  extends 'base.html' %}
 
 {% block content %}
-<a href="/bean/new">Create New Bean</a>
-{% for bar in bar_info %}
-    <li><a>{{bar.name}}</a>
-        <input type="radio" name="favorites" id="fav_bar">
-    </li>
+<h1>Bar List</h1>
+{% for bar in bars %}
+    <h3>{{ bar.name }}</h3> 
 {% endfor %}
 
 {% endblock %}

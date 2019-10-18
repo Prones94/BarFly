@@ -1,19 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<form method="POST" action="http://127.0.0.1:5000/beans">
-<fieldset>
-    <legend>New Beans</legend>
-    <label for="name">Name:</label>
-    <input type="text" id="name"><br>
-    <label for="location">Location:</label>
-    <input type="text" id="location"><br>
-    <label for="smell">Smell</label>
-    <input type="text" id="smell"><br>
-    <label for="taste">Taste:</label>
-    <input type="text" id="taste"><br>
-    <button type="submit">Enter!</button>
-</fieldset>
+<form method="POST" action="/bars">
+    {% include 'partial/form.html' %}
+    <div class="bar_form">
+        <button type="submit">Save This!</button>
+    </div>
 </form>
 {% endblock %}

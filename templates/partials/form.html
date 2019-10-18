@@ -1,0 +1,24 @@
+<fieldset>
+    <legend>Complete This Form!</legend>
+    <div class="bar_form">
+        <label for="bar_name">Bar Name:</label>
+        <input type="text" id="bar_name" name="name" value = {{ bars.name }} placeholder="Name" required>
+    </div>
+    <div class="bar_form">
+        <label for="bar_location">Location:</label>
+        <input type="text" id="bar_location" name="location" value={{ bars.location }} placeholder="Location" required>
+    </div>
+    <div class="bar_form">
+        <label for="bar_rating">Rating:</label>
+        <input type="text" id="bar_rating" name="rating" value={{ bars.rating }} placeholder="Rating">
+    </div>
+    <div class="bar_form">
+        <label for="bar_alias">Type:</label>
+        <input type="text" id="bar_alias" name="alias" value={{ bars.alias }} placeholder="Alias">
+    </div>
+    <div class="bar_form">
+        <label for="img_url">Add a picture:</label>
+        <input type="text" id="img_url" name="image" value={{ bars.img_url }} placeholder="jpg,img">
+    </div>
+    <button type="submit">Click Here!</button>
+</fieldset>
