@@ -1,9 +1,12 @@
 {%  extends 'base.html' %}
 
 {% block content %}
-<h1>Bar List</h1>
+<h1>Bar List</h1><br>
+<button><a href="/">Home Page</a></button>
+<button><a href="/bars/new">Add Another Bar!</a></button>
+
 {% for bar in bars %}
-    <h3>{{ bar.name }}</h3> 
+    <h3><a href='/bars/{{ bar._id }}'>{{ bar.name }}</a></h3> 
 {% endfor %}
 
 {% endblock %}

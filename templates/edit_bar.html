@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method='POST' action='/bars/{{bars._id}}'>
+    <fieldset>
+        <legend>Edit Bar Information</legend>
+        <div class="bar_form">
+            <label for='bar_name'>Title</label><br>
+            <input id='bar_name' type='text' name='name' value='{{ bars.name }}'/>
+        </div>
+    <div class="bar_form">
+        <label for='bar_location'>Description</label><br>
+        <input id='bar_location' type='text' name='location' value='{{ bars.location }}' />
+    </div>
+    <div class="bar_form">
+            <label for='bar_rating'>Rating</label><br>
+            <input id='bar_rating' type='text' name='rating' value='{{ bars.rating }}'/>
+    </div>
+    <div class="bar_form">
+            <label for='bar_alias'>Aliases</label><br>
+            <input id='bar_alias' type='text' name='alias' value='{{ bars.alias }}'/>
+    </div>
+    <div class="bar_form">
+            <label for='img_url'>Image Tag</label><br>
+            <input id='img_url' type='text' name='image' value='{{ bars.img_url }}'/>
+    </div>
+
+    </fieldset>
+
+    <!-- BUTTON -->
+    <p>
+        <button type='submit'>Save Information</button>
+    </p>
+</form>
+{% endblock %}
