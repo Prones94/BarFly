@@ -7,7 +7,8 @@ from bson.objectid import ObjectId
 
 app = Flask(__name__)
 
-client = MongoClient()
+host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/Bars')
+client = MongoClient(host=f'{host}?retryWrites=false')
 db = client.Bars
 bars = db.Bar
 
@@ -75,4 +76,4 @@ def delete_bar(newbar_id):
     return redirect(url_for('index'))
         
 if __name__ =='__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=os.environ.get('PORT', 5000))
