@@ -27,35 +27,36 @@ def newbar():
     '''Provde a new bar information(C of CRUD)'''
     return render_template('bar_form.html', bar= {}, title = "New Bar")
 
-@app.route('/bars/<newbar_id>')
-def single_bar(newbar_id):
-    '''Single bar information(R of CRUD)'''
-    one_bar = bars.find_one({'_id': ObjectId(newbar_id)})
-    return render_template('bar_show.html', one_bar=one_bar)
-
 @app.route('/bars', methods=['POST'])
 def bar_form():
     '''Form to submit new bar information(C of CRUD)'''
-    new_bar = {
+    bar = {
         'name':request.form.get('name'),
         'location':request.form.get('location'),
         'rating':request.form.get('rating'),
         'alias':request.form.get('alias'),
         'img_url':request.form.get('img_url')
     }
-    newbar_id = bars.insert_one(new_bar).inserted_id
+    newbar_id = bars.insert_one(bar).inserted_id
     return redirect(url_for('single_bar', newbar_id=newbar_id))
+    
+@app.route('/bars/<newbar_id>')
+def single_bar(newbar_id):
+    '''Single bar information(R of CRUD)'''
+    bar = bars.find_one({'_id': ObjectId(newbar_id)})
+    return render_template('bar_show.html', bars=bar)
+
 
 @app.route('/bars/<newbar_id>/edit')
 def edit_bar(newbar_id):
     '''displays edit form for update_bar function(U of CRUD)'''
-    one_bar = bars.find_one({'_id': ObjectId(newbar_id)})
-    return render_template('bar_show.html', one_bar=one_bar)
+    bar = bars.find_one({'_id': ObjectId(newbar_id)})
+    return render_template('edit_bar.html', bars=bar, title = 'Edit Bar')
 
 @app.route('/bars/<newbar_id>', methods=['POST'])
 def update_bar(newbar_id):
     '''Submits edited version of bar information(U of CRUD)'''
-    updated_bar= {
+    new_bar= {
         'name':request.form.get('name'),
         'location':request.form.get('location'),
         'rating':request.form.get('rating'),
@@ -64,12 +65,12 @@ def update_bar(newbar_id):
     }
     bars.update_one(
         {'_id':ObjectId(newbar_id)},
-        {'$set':updated_bar})
-    return redirect(url_for('onebar_show',newbar_id=newbar_id))
+        {'$set':new_bar})
+    return redirect(url_for('single_bar',newbar_id=newbar_id))
 
 @app.route('/bars/<newbar_id>/delete', methods=['POST'])
 def delete_bar(newbar_id):
-    '''Deletes bar information'''
+    '''Deletes bar information(D of CRUD)'''
     bars.delete_one({'_id': ObjectId(newbar_id)})
     return redirect(url_for('index'))
         
